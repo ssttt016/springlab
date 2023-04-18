@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kbstar</groupId>
-    <artifactId>day01</artifactId>
+    <artifactId>day022_XML</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -15,6 +16,7 @@
         <org.aspectj-version>1.6.5</org.aspectj-version>
         <org.slf4j-version>1.7.18</org.slf4j-version>
     </properties>
+
 
     <dependencies>
         <!-- Spring -->
@@ -89,7 +91,19 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${org.aspectj-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.2.5.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.2.5.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
 
     </dependencies>
+
 </project>
