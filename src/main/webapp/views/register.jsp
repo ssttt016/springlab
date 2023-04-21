@@ -1,26 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script>
-    let register_form = {
-        init:function(){
-            $("#register_btn").click(function(){
-                register_form.send();
-            });
-        },
-        send:function(){
-            $("#register_form").attr({
-                'action':'/registerimpl',
-                'method':'get'
-            });
-            $("#register_form").submit();
-        }
-    };
-
-    $(function(){
-        register_form.init();
-    });
-</script>
-
 <div class="col-sm-8 text-left">
     <h1>Register Page</h1>
     <form id="register_form" class="form-horizontal well">

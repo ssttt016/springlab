@@ -23,7 +23,7 @@
     </appender>
 
 <!--    개발할때는 INFO에서 ERROR로 변경 ERROR만 출력됨-->
-    <root level="ERROR">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
 
