@@ -28,6 +28,7 @@ public class AjaxImplController {
         }
         return result;
     }
+
     @RequestMapping("/getdata")
     public Object getdata(){
         List<Cust> list = new ArrayList<>();
