@@ -21,25 +21,6 @@ $(function(){
 
 // register
 
-let register_form = {
-    init:function(){
-        $("#register_btn").click(function(){
-            register_form.send();
-        });
-    },
-    send:function(){
-        $("#register_form").attr({
-            'action':'/registerimpl',
-            'method':'post'
-        });
-        $("#register_form").submit();
-    }
-};
-
-$(function(){
-    register_form.init();
-});
-
 // jsp01
 
 let jsp01 = {

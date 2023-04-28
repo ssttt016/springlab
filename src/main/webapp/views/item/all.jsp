@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
-    #item_img{
+    .item_img{
         width:100px;
     }
 </style>
@@ -25,7 +25,7 @@
                     <tbody>
                     <c:forEach var="obj" items="${allitem}">
                         <tr>
-                            <td><img id="item_img" src="/uimg/${obj.imgname}"/></td>
+                            <td><img class="item_img" src="/uimg/${obj.imgname}"/></td>
                             <td>${obj.id}</td>
                             <td>${obj.name}</td>
                             <td><fmt:formatNumber value="${obj.price}" type="currency" /></td>

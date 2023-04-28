@@ -1,9 +1,11 @@
 package com.kbstar.controller;
 
 import com.kbstar.dto.Cust;
+import com.kbstar.service.CustService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +18,8 @@ import java.util.Random;
 @Controller
 @RequestMapping("/cust")
 public class CustController {
-    //Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    @Autowired
+    CustService custService;
     String dir= "cust/";
     @RequestMapping("")
     public String main(Model model){
@@ -45,14 +48,15 @@ public class CustController {
     }
 
     @RequestMapping("/all")
-    public String all(Model model){
-        List<Cust> clist = new ArrayList<>();
-        clist.add(new Cust("id01","pwd01","james1"));
-        clist.add(new Cust("id02","pwd02","james2"));
-        clist.add(new Cust("id03","pwd03","james3"));
-        clist.add(new Cust("id04","pwd04","james4"));
-        clist.add(new Cust("id05","pwd05","james5"));
-        model.addAttribute("clist",clist);
+    public String all(Model model) throws Exception {
+        List<Cust> list = null;
+        try {
+            list = custService.get();
+        }catch(Exception e){
+            throw new Exception("시스템 장애");
+        }
+
+        model.addAttribute("clist",list);
 
         model.addAttribute("center",dir+"all");
         model.addAttribute("left",dir+"left");

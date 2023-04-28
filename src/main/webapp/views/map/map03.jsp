@@ -14,13 +14,13 @@
         init:function(){
             this.display();
             $('#s_btn').click(function(){
-                map03.go(37.5721418, 126.9772436,'s')
+                map03.go(37.638346, 127.012152,'s')
             });
             $('#b_btn').click(function(){
-                map03.go(35.1586975, 129.1603842,'b')
+                map03.go(35.1798456, 129.0705432,'b')
             });
             $('#j_btn').click(function(){
-                map03.go(33.3616666, 126.5291666,'j')
+                map03.go(33.4999002, 126.5341787,'j')
             });
         },
         display:function(){
@@ -31,6 +31,7 @@
             };
             // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
             map = new kakao.maps.Map(mapContainer, mapOption);
+
             // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
             var mapTypeControl = new kakao.maps.MapTypeControl();
             // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
@@ -50,11 +51,27 @@
             marker.setMap(map);
         },
         go:function(lat, lng, loc){
+            var mapContainer = document.querySelector('#map03 > #map'); // 지도를 표시할 div
+            var mapOption = {
+                center: new kakao.maps.LatLng(37.5448181, 127.0565111), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+            // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+            map = new kakao.maps.Map(mapContainer, mapOption);
             // 이동할 위도 경도 위치를 생성합니다
             var moveLatLon = new kakao.maps.LatLng(lat, lng);
             // 지도 중심을 부드럽게 이동시킵니다
             // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
             map.panTo(moveLatLon);
+
+            // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+            var mapTypeControl = new kakao.maps.MapTypeControl();
+            // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+            // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+            map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+            // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+            var zoomControl = new kakao.maps.ZoomControl();
+            map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
             var markerPosition  = new kakao.maps.LatLng(lat, lng);
             var marker = new kakao.maps.Marker({
@@ -87,7 +104,7 @@
                 });
                 // infoWindow
                 var iwContent = '<h2>'+positions[i].title+'</h2>';
-                iwContent += '<img src="/img/'+positions[i].img+'" style="width:50px">';
+                iwContent += '<img src="/uimg/'+positions[i].img+'" style="width:50px">';
 
                 var infowindow = new kakao.maps.InfoWindow({
                     position : markerPosition,
@@ -96,7 +113,7 @@
 
                 kakao.maps.event.addListener(marker, 'mouseover', mouseoverListener(marker, infowindow));
                 kakao.maps.event.addListener(marker, 'mouseout', mouseoutListener(marker, infowindow));
-                kakao.maps.event.addListener(marker, 'click', mouseclickListener(positions[i].target));
+                kakao.maps.event.addListener(marker, 'click', mouseclickListener(positions[i].id));
 
 
                 function mouseoverListener(marker, infowindow) {
@@ -111,7 +128,7 @@
                 }
                 function mouseclickListener(target) {
                     return function(){
-                        location.href = target;
+                        location.href = '/map/detail?id='+target;
                     };
                 }
 
