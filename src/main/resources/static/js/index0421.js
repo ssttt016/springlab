@@ -15,11 +15,6 @@ let login_form = {
     }
 };
 
-$(function(){
-    login_form.init();
-});
-
-// register
 
 // jsp01
 

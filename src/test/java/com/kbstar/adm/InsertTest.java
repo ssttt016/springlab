@@ -17,7 +17,7 @@ class InsertTest {
     AdmService service;
     @Test
     void contextLoads() {
-        Adm obj = new Adm("id22","pwd20",3);
+        Adm obj = new Adm("adm01","pwd01",3);
         try{
             service.register(obj);
             log.info("등록 정상..");

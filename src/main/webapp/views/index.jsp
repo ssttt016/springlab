@@ -57,7 +57,7 @@
     </style>
 </head>
 <body>
-
+<%--nav start--%>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -71,10 +71,12 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="/jsp">JSP</a></li>
-                <li><a href="/ajax">AJAX</a></li>
-                <li><a href="/map">MAP</a></li>
-                <li><a href="/chart">CHART</a></li>
+                <c:if test="${logincust != null}">
+                    <li><a href="/jsp">JSP</a></li>
+                    <li><a href="/ajax">AJAX</a></li>
+                    <li><a href="/map">MAP</a></li>
+                    <li><a href="/chart">CHART</a></li>
+                </c:if>
                 <li><a href="/cust">Cust</a></li>
                 <li><a href="/item">Item</a></li>
                 <c:if test="${logincust != null}">
@@ -90,13 +92,17 @@
                 </c:when>
                 <c:otherwise>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/loginout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        <li><a href="/logouts"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/custinfo?id=${logincust.id}">${logincust.id}</a></li>
                     </ul>
                 </c:otherwise>
             </c:choose>
         </div>
     </div>
 </nav>
+<%--nav end--%>
 
 <div class="container-fluid text-center">
     <div class="row content">

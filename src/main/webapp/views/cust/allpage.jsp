@@ -14,14 +14,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="c" items="${clist}">
+                    <c:forEach var="obj" items="${cpage.getList()}">
                         <tr>
-                            <td><a href="/cust/get?id=${c.id}">${c.id}</a></td>
-                            <td>${c.name}</td>
+                            <td><a href="/cust/get?id=${obj.id}">${obj.id}</a></td>
+                            <td>${obj.name}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
+               <jsp:include page="../page.jsp"/>
             </div>
         </div>  <%--        row content end--%>
     </div>

@@ -15,7 +15,7 @@ class UpdateTest {
     CustService service;
     @Test
     void contextLoads() {
-        Cust obj = new Cust("id01","pwd05","james2");
+        Cust obj = new Cust("id03","pwd03","james2");
         try{
             service.modify(obj);
             log.info("등록 정상..");
