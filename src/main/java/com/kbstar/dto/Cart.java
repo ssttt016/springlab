@@ -1,14 +1,14 @@
 package com.kbstar.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 
 @Getter
 @AllArgsConstructor
 @ToString
+@Setter
+@NoArgsConstructor
 public class Cart {
     private int id;
     private String cust_id;

@@ -13,7 +13,8 @@
         AND c.id = #{id}
     </select>
     <select id="getmycart" parameterType="String" resultType="cart">
-        SELECT c.id, c.cust_id, c.item_id, c.cnt, c.rdate, cu.name AS cust_name, it.name AS item_name, it.price AS item_price, it.imgname
+        SELECT c.id, c.cust_id, c.item_id, c.cnt, c.rdate, cu.name AS cust_name, it.name AS item_name, it.price AS item_price,
+               it.imgname AS item_imgname
         FROM cart c, cust cu, item it
         WHERE c.cust_id= cu.id
         AND c.item_id= it.id
@@ -26,7 +27,15 @@
         AND c.item_id= it.id
     </select>
     <insert id="insert" parameterType="cart">
-        INSERT INTO cart VALUES (cart_seq.NEXTVAL,#{cust_id},#{item_id},#{cnt},SYSDATE)
+        MERGE INTO cart
+            USING dual
+            ON (cust_id = #{cust_id} AND item_id = #{item_id})
+            WHEN NOT MATCHED THEN
+                INSERT (id,cust_id,item_id,cnt,rdate)
+                    VALUES (cart_seq.NEXTVAL, #{cust_id}, #{item_id}, #{cnt}, SYSDATE)
+            WHEN MATCHED THEN
+                UPDATE SET
+                    cnt = cnt+ #{cnt}
     </insert>
     <update id="update" parameterType="cart">
         UPDATE cart SET item_id=#{item_id}, cnt=#{cnt} WHERE id=#{id}

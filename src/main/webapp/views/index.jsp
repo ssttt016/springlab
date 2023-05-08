@@ -11,6 +11,9 @@
 <script src="https://code.highcharts.com/themes/high-contrast-light.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
 
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,6 +96,13 @@
                 <c:otherwise>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/logouts"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/item/allcart?id=${logincust.id}">
+                                CART&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span>
+                            </a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/custinfo?id=${logincust.id}">${logincust.id}</a></li>

@@ -20,7 +20,7 @@ public class SelectIDTest {
     void contextLoads()  {
        List<Cart> list = null;
         try {
-            list = service.getMyCart("id02");
+            list = service.getMyCart("id01");
         } catch (Exception e) {
             log.info("에러..");
             e.printStackTrace();

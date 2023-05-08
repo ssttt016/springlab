@@ -28,7 +28,7 @@
                             <td><img class="item_img" src="/uimg/${obj.imgname}"/></td>
                             <td>${obj.id}</td>
                             <td>${obj.name}</td>
-                            <td><fmt:formatNumber value="${obj.price}" type="currency" /></td>
+                            <td><fmt:formatNumber value="${obj.price}" pattern="###,###원" /></td>
                             <td><fmt:formatDate value="${obj.rdate}" pattern="yyyy-MM-dd"/></td>
                         </tr>
                     </c:forEach>

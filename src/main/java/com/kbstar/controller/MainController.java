@@ -101,6 +101,16 @@ public class MainController {
         model.addAttribute("center","registerok");
         return "index";
     }
+    @RequestMapping("/pic")
+    public String pic(Model model){
+        model.addAttribute("center","pic");
+        return "index";
+    }
+    @RequestMapping("/websocket")
+    public String websocket(Model model) {
+        model.addAttribute("center","websocket");
+        return "index";
+    }
 
 
     // /quics?page=bs01

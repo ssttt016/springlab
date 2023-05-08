@@ -15,7 +15,6 @@ public class Item {
     private String name;
     private int price;
     private String imgname;
-    //private Date regdate;  -> all.jsp에도 수정 (regdate -> rdate)
     private Date rdate;
 
 }
