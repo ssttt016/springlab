@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <%--HighChart Library--%>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
@@ -16,12 +17,38 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<script>
+    let chatbtn = {
+        init:function(){
+            const scrollBtn = document.createElement("button");
+            scrollBtn.innerHTML = "chatbot";
+            scrollBtn.setAttribute("id", "scroll-btn");
+            document.body.appendChild(scrollBtn);
+            scrollBtn.classList.add("show");
+            scrollBtn.addEventListener("click", function(){
+                location.href='/login';
+            });
+            const scrollBtn2 = document.createElement("button");
+            scrollBtn2.innerHTML = "1:1";
+            scrollBtn2.setAttribute("id", "scroll-btn2");
+            document.body.appendChild(scrollBtn2);
+            scrollBtn2.classList.add("show");
+            scrollBtn2.addEventListener("click", function(){
+                location.href='/login';
+            });
+        }
+    };
+
+    $(function(){
+        chatbtn.init();
+    });
+</script>
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="/js/index0421.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cefdd74a1aa766d9e74b1532c04f5b77"></script>
@@ -47,6 +74,42 @@
             background-color: #555;
             color: white;
             padding: 15px;
+        }
+        #scroll-btn {
+            opacity: 0;
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            background-color: #ef476f;
+            position: fixed;
+            bottom: 13%;
+            right: 10%;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            font: 2px monospace;
+            transition: opacity 2s, transform 2s;
+        }
+        #scroll-btn.show {
+            opacity: 1;
+            transition: opacity 5s, transform 5s;
+        }
+        #scroll-btn2 {
+            opacity: 0;
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            background-color: #ef476f;
+            position: fixed;
+            bottom: 5%;
+            right: 10%;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            font: bold 10px monospace;
+            transition: opacity 2s, transform 2s;
+        }
+        #scroll-btn2.show {
+            opacity: 1;
+            transition: opacity 5s, transform 5s;
         }
 
         /* On small screens, set height to 'auto' for sidenav and grid */

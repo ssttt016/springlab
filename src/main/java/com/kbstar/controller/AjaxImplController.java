@@ -8,6 +8,7 @@ import com.kbstar.service.CartService;
 import com.kbstar.service.CustService;
 import com.kbstar.service.MarkerService;
 import com.kbstar.util.FileUploadUtil;
+import com.kbstar.util.WeatherUtil;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,5 +107,9 @@ public class AjaxImplController {
     public Object addcart(Cart cart) throws Exception {
         cartService.register(cart);
         return "";
+    }
+    @RequestMapping("/weather2")
+    public Object weather2(String loc) throws Exception {
+        return WeatherUtil.getWeather3("108");
     }
 }
