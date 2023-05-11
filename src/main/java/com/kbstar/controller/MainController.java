@@ -28,8 +28,8 @@ public class MainController {
     CustService custService;
     @RequestMapping("/")
     public String main(Model model) throws Exception {
-        String result = WeatherUtil.getWeather1("109");
-        model.addAttribute("weatherinfo",result);
+//        String result = WeatherUtil.getWeather1("109");
+//        model.addAttribute("weatherinfo",result);
         return "index";
     }
     @RequestMapping("/login")
@@ -116,6 +116,16 @@ public class MainController {
     public String websocket(Model model) {
         model.addAttribute("center","websocket");
         model.addAttribute("adminserver",adminserver);
+        return "index";
+    }
+    @RequestMapping("/cfr1")
+    public String cfr1(Model model){
+        model.addAttribute("center","cfr1");
+        return "index";
+    }
+    @RequestMapping("/cfr2")
+    public String cfr2(Model model){
+        model.addAttribute("center","cfr2");
         return "index";
     }
 
