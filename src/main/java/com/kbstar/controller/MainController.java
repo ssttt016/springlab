@@ -83,7 +83,7 @@ public class MainController {
             cust = custService.get(id);
             if(cust != null && encoder.matches(pwd,cust.getPwd())){
                 nextPage = "loginok";
-                session.setMaxInactiveInterval(100000);
+                session.setMaxInactiveInterval(1000000);
                 session.setAttribute("logincust",cust);
             }
         } catch (Exception e) {
@@ -138,6 +138,24 @@ public class MainController {
         model.addAttribute("center","ocr2");
         return "index";
     }
+    @RequestMapping("/chatbot")
+    public String chatbot(Model model, HttpSession session) {
+        if(session.getAttribute("logincust") == null){
+            return "redirect:/login";
+        }
+        model.addAttribute("center","chatbot");
+        model.addAttribute("adminserver",adminserver);
+        return "index";
+    }
+    @RequestMapping("/callcenter")
+    public String callcenter(Model model, HttpSession session) {
+        if(session.getAttribute("logincust") == null){
+            return "redirect:/login";
+        }
+        model.addAttribute("center","callcenter");
+        model.addAttribute("adminserver",adminserver);
+        return "index";
+    }
 
 
     // /quics?page=bs01
@@ -145,5 +163,6 @@ public class MainController {
     public String quics(String page){
         return page;
     }
+
 
 }
