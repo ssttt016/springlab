@@ -11,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,13 +26,17 @@ public class NcpController {
 
     @Value("${uploadimgdir}")
     String imgpath;
+    @Autowired
+    CFRCelebrityUtil celebrityUtil;
+    @Autowired
+    CFRFaceUtil faceUtil;
     @RequestMapping("/cfr1impl")
     public String cfr1impl(Model model, Ncp ncp) throws ParseException {
         // 이미지를 서버에 저장
         FileUploadUtil.saveFile(ncp.getImg(),imgpath);
         // 저장한 이미지를 ncp로 , 결과를 받는다
         String imgname = ncp.getImg().getOriginalFilename();
-        JSONObject result = (JSONObject) CFRCelebrityUtil.getResult(imgpath,imgname);
+        JSONObject result = (JSONObject) celebrityUtil.getResult(imgpath,imgname);
         log.info(result.toJSONString());
 
         JSONArray faces = (JSONArray) result.get("faces");
@@ -49,7 +54,7 @@ public class NcpController {
         FileUploadUtil.saveFile(ncp.getImg(),imgpath);
 
         String imgname = ncp.getImg().getOriginalFilename();
-        JSONObject result = (JSONObject) CFRFaceUtil.getResult(imgpath,imgname);
+        JSONObject result = (JSONObject) faceUtil.getResult(imgpath,imgname);
         log.info(result.toJSONString());
 
         String gender_value = "";
@@ -83,7 +88,7 @@ public class NcpController {
     }
     @RequestMapping("/mycfr")
     public String mycfr(Model model, Ncp ncp,String imgname) throws ParseException {
-        JSONObject result = (JSONObject) CFRFaceUtil.getResult(imgpath,imgname);
+        JSONObject result = (JSONObject) faceUtil.getResult(imgpath,imgname);
         log.info(result.toJSONString());
 
         String gender_value = "";
