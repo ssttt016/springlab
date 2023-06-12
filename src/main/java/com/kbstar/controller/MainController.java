@@ -157,6 +157,37 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/cal1")
+    public String cal1(Model model){
+        model.addAttribute("center","cal1");
+        return "index";
+    }
+    @RequestMapping("/cal2")
+    public String cal2(Model model){
+        model.addAttribute("center","cal2");
+        return "index";
+    }
+    @RequestMapping("/cal3")
+    public String cal3(Model model){
+        model.addAttribute("center","cal3");
+        return "index";
+    }
+    @RequestMapping("/cal4")
+    public String cal4(Model model){
+        model.addAttribute("center","cal4");
+        return "index";
+    }
+    @RequestMapping("/cal5")
+    public String cal5(Model model){
+        model.addAttribute("center","cal5");
+        return "index";
+    }
+    @RequestMapping("/cal6")
+    public String cal6(Model model){
+        model.addAttribute("center","cal5");
+        return "index";
+    }
+
 
     // /quics?page=bs01
     @RequestMapping("/quics")

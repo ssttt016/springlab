@@ -3,13 +3,34 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.CustMapper">
-<!--CustMapper Interface 에서 상속을 받아서  아래 id 들이 select, selectall, insert, delete 인것이다-->
 
-    <select id="getpage" resultType="cust">
-        SELECT * FROM cust ORDER BY id DESC
-    </select>
     <select id="select" parameterType="String" resultType="cust">
         SELECT * FROM cust WHERE id=#{id}
+    </select>
+    <select id="getpage" resultType="cust">
+        SELECT * FROM cust
+    </select>
+    <select id="getfindpage" resultType="cust" parameterType="search">
+        SELECT *
+        FROM cust
+        WHERE 1=1
+        <if test="keyword == 'id'">
+            AND id LIKE '%' ||  #{search} || '%'
+        </if>
+        <if test="keyword == 'name'">
+            AND name LIKE '%' ||  #{search} || '%'
+        </if>
+    </select>
+    <select id="getfindpage2" resultType="cust" parameterType="search2">
+        SELECT *
+        FROM cust
+        WHERE 1=1
+        <if test="search1 != ''">
+            AND id LIKE '%' ||  #{search1} || '%'
+        </if>
+        <if test="search2 != ''">
+            AND name LIKE '%' ||  #{search2} || '%'
+        </if>
     </select>
     <select id="selectall" resultType="cust">
         SELECT * FROM cust
@@ -18,7 +39,7 @@
         INSERT INTO cust VALUES (#{id},#{pwd},#{name})
     </insert>
     <update id="update" parameterType="cust">
-        UPDATE cust SET name=#{name},pwd=#{pwd} WHERE id=#{id}
+        UPDATE cust SET pwd=#{pwd},name=#{name} WHERE id=#{id}
     </update>
     <delete id="delete" parameterType="String">
         DELETE FROM cust WHERE id=#{id}

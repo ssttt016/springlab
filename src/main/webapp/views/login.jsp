@@ -10,11 +10,11 @@
     <form id="login_form" class="form-horizontal well">
         <div class="form-group">
             <label for="id">ID</label><br/>
-            <input type="text" name="id" id="id" placeholder="ID를 입력하세요" class="form-control"/>
+            <input type="text" name="id" value="id03" id="id" placeholder="ID를 입력하세요" class="form-control"/>
         </div>
         <div class="form-group">
             <label for="pwd">PASSWORD</label><br/>
-            <input type="password" name="pwd" id="pwd" placeholder="PWD를 입력하세요" class="form-control"/>
+            <input type="password" name="pwd" value="pwd03" id="pwd" placeholder="PWD를 입력하세요" class="form-control"/>
         </div>
         <div class="form-group">
             <button id="login_btn" class="btn btn-danger">로그인</button>
